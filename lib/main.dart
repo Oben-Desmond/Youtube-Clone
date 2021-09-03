@@ -1,50 +1,98 @@
+import 'dart:math';
+
 import 'package:first_flutter_app/screens/CardWidget.dart';
 import 'package:first_flutter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  var rng = new Random();
+  for (var i = 0; i < 10; i++) {
+    print(rng.nextInt(100));
+  }
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  String text = 'my demo app';
-  var url =
-      'https://st.depositphotos.com/1597387/1984/i/600/depositphotos_19841901-stock-photo-asian-young-business-man-close.jpg';
-  String src =
-      'https://images.unsplash.com/photo-1596247717921-f206bdb2ae64?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dmliaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            title: Text('Home'),
-            backgroundColor: Colors.red[900],
-            actions: [
-              Icon(
-                Icons.search,
+        home: DefaultTabController(
+          length:4,
+          child: Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              title: Text('Home'),
+              backgroundColor: Colors.red[900],
+              bottom: TabBar(
+                indicatorColor: Colors.white,
+                tabs: [
+                  Tab(icon: Icon(Icons.home)),
+                  Tab(icon: Icon(Icons.local_fire_department)),
+                  Tab(icon: Icon(Icons.video_library)),
+                  Tab(icon: Icon(Icons.person)),
+                  // Tab(icon: Icon(Icons.directions_bike)),
+                ],
               ),
-              SizedBox(
-                width: 10,
-              ),
-              Icon(Icons.menu_rounded),
-              SizedBox(
-                width: 10,
-              )
-            ],
-          ),
-          body: ListView(
-            children: [
-              CardWidget(),
-              CardWidget(),
-              CardWidget(),
-            ],
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => {},
-            child: Icon(Icons.video_camera_front),
-            backgroundColor: Colors.red[900],
+              actions: [
+                Icon(
+                  Icons.search,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Icon(Icons.more_vert),
+                SizedBox(
+                  width: 10,
+                )
+              ],
+            ),
+            body: TabBarView(
+              children: [
+                ListView(
+                  children: [
+                    CardWidget(
+                        name: 'Akumah Ndeh',
+                        url:
+                            'https://images.unsplash.com/file-1628106544947-73e839ff1e0fimage',
+                        timeago: '3 Weeks Ago',
+                        views: '20M'),
+                    CardWidget(
+                        name: 'Larel Mathews',
+                        url:
+                            'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZXZlbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                        timeago: '2 Weeks Ago',
+                        views: '20M'),
+                    CardWidget(
+                        name: 'Peter Parker',
+                        url:
+                            'https://images.unsplash.com/photo-1508997449629-303059a039c0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGV2ZW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                        timeago: '1 Weeks Ago',
+                        views: '20M'),
+                    CardWidget(
+                        name: 'Lesly Lebron',
+                        url:
+                            'https://images.unsplash.com/photo-1560523160-754a9e25c68f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGV2ZW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                        timeago: '9 Weeks Ago',
+                        views: '20M'),
+                    CardWidget(
+                        name: 'Usain Bolt',
+                        url:
+                            'https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg)/origin-imgresizer.eurosport.com/2021/04/05/3023585-62027428-2560-1440.jpg',
+                        timeago: '20 months Ago',
+                        views: '20M'),
+                  ],
+                ),
+                Icon(Icons.cabin),
+                Icon(Icons.cabin),
+                Icon(Icons.cabin),
+              ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () => {},
+              child: Icon(Icons.video_camera_front),
+              backgroundColor: Colors.red[900],
+            ),
           ),
         ));
   }
