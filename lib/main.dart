@@ -1,3 +1,4 @@
+import 'package:first_flutter_app/screens/CardWidget.dart';
 import 'package:first_flutter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,79 +10,43 @@ class MyApp extends StatelessWidget {
   String text = 'my demo app';
   var url =
       'https://st.depositphotos.com/1597387/1984/i/600/depositphotos_19841901-stock-photo-asian-young-business-man-close.jpg';
+  String src =
+      'https://images.unsplash.com/photo-1596247717921-f206bdb2ae64?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dmliaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: SafeArea(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-              Container(
-                height: 160,
-                child: CircleAvatar(backgroundImage: NetworkImage(url)),
-                margin: EdgeInsets.only(bottom: 20),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            title: Text('Home'),
+            backgroundColor: Colors.red[900],
+            actions: [
+              Icon(
+                Icons.search,
               ),
-              Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  child: Center(
-                    child: Text(
-                      'Angela Yu',
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontStyle: FontStyle.italic,
-                          fontFamily: 'Pacifico'),
-                    ),
-                  )),
-              Container(
-                  margin: EdgeInsets.only(bottom: 12),
-                  child: Center(
-                    child: Text(
-                      'FLUTTER DEVELOPER',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white60,
-                        // decoration: TextDecoration.underline,
-                        fontFamily: 'SansPro',
-                      ),
-                    ),
-                  )),
-             
-              Container(
-                  color: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 20),
-                  child: Row(
-                    children: [
-                      Icon(Icons.call, color: Colors.teal),
-                      SizedBox(width: 20),
-                      Text(
-                        '+745 3337 37667',
-                        style: TextStyle(color: Colors.teal[900]),
-                      )
-                    ],
-                  )),
-              Container(
-                  color: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 20),
-                  child: Row(
-                    children: [
-                      Icon(Icons.mail, color: Colors.teal),
-                      SizedBox(width: 20),
-                      Text(
-                        'obend678@gmail.com',
-                        style: TextStyle(color: Colors.teal[900]),
-                      )
-                    ],
-                  )),
-            ])),
-      ),
-    );
+              SizedBox(
+                width: 10,
+              ),
+              Icon(Icons.menu_rounded),
+              SizedBox(
+                width: 10,
+              )
+            ],
+          ),
+          body: ListView(
+            children: [
+              CardWidget(),
+              CardWidget(),
+              CardWidget(),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => {},
+            child: Icon(Icons.video_camera_front),
+            backgroundColor: Colors.red[900],
+          ),
+        ));
   }
 }
 
