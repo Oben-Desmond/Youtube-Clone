@@ -51,7 +51,7 @@ class CardWidget extends StatelessWidget {
                 Flexible(
                   child: Text(
                     'How to Apologize a guide to people that suck at it',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500, color: Colors.white70),
                   ),
                 ),
                 IconButton(

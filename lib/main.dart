@@ -18,22 +18,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(
-          length:4,
+          length:3,
           child: Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.black26,
             appBar: AppBar(
               title: Text('Home'),
-              backgroundColor: Colors.red[900],
-              bottom: TabBar(
-                indicatorColor: Colors.white,
-                tabs: [
-                  Tab(icon: Icon(Icons.home)),
-                  Tab(icon: Icon(Icons.local_fire_department)),
-                  Tab(icon: Icon(Icons.video_library)),
-                  Tab(icon: Icon(Icons.person)),
-                  // Tab(icon: Icon(Icons.directions_bike)),
-                ],
-              ),
+              backgroundColor: Colors.black12,
+              
               actions: [
                 Icon(
                   Icons.search,
@@ -48,6 +39,7 @@ class MyApp extends StatelessWidget {
               ],
             ),
             body: TabBarView(
+              
               children: [
                 ListView(
                   children: [
@@ -85,15 +77,25 @@ class MyApp extends StatelessWidget {
                 ),
                 Icon(Icons.cabin),
                 Icon(Icons.cabin),
-                Icon(Icons.cabin),
               ],
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () => {},
               child: Icon(Icons.video_camera_front),
-              backgroundColor: Colors.red[900],
+              backgroundColor: Colors.orange,
             ),
+            bottomNavigationBar: TabBar(
+                indicatorColor: Colors.orange,
+                labelColor: Colors.orange,
+                tabs: [
+                  Tab(icon: Icon(Icons.movie_filter_outlined,textDirection: TextDirection.rtl,),text: 'Top Movies',),
+                  Tab(icon: Icon(Icons.download_outlined), text: 'Downloads',),
+                  Tab(icon: Icon(Icons.person_outline_outlined),text: 'Account'),
+                  // Tab(icon: Icon(Icons.directions_bike)),
+                ],
+              ),
           ),
+
         ));
   }
 }
