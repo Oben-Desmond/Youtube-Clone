@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:first_flutter_app/screens/CardWidget.dart';
 import 'package:first_flutter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   var rng = new Random();
@@ -17,14 +18,39 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme:  ThemeData(
+        brightness: Brightness.light,
+        /* light theme settings */
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        /* dark theme settings */
+      ),
+      themeMode: ThemeMode.dark, 
+      /* ThemeMode.system to follow system theme, 
+         ThemeMode.light for light theme, 
+         ThemeMode.dark for dark theme
+      */
+      
+   
         home: DefaultTabController(
           length:3,
           child: Scaffold(
-            backgroundColor: Colors.black26,
+            // backgroundColor: Colors.black26,
             appBar: AppBar(
-              title: Text('Home'),
-              backgroundColor: Colors.black12,
-              
+              title: Text('Vizu'),
+              backgroundColor: Colors.black87,
+              systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.orange),
+              bottom:  TabBar(
+                indicatorColor: Colors.orange,
+                labelColor: Colors.orange,
+                tabs: [
+                  Tab(text: 'Top Movies',),
+                  Tab(text: 'Downloads',),
+                  Tab(text: 'Account'),
+                  // Tab(icon: Icon(Icons.directions_bike)),
+                ],
+              ),
               actions: [
                 Icon(
                   Icons.search,
@@ -39,40 +65,39 @@ class MyApp extends StatelessWidget {
               ],
             ),
             body: TabBarView(
-              
+               
               children: [
                 ListView(
                   children: [
                     CardWidget(
                         name: 'Akumah Ndeh',
                         url:
-                            'https://images.unsplash.com/file-1628106544947-73e839ff1e0fimage',
+                            'https://i.ytimg.com/vi_webp/VSB4wGIdDwo/maxresdefault.webp',
                         timeago: '3 Weeks Ago',
-                        views: '20M'),
+                        views: 'Without Re', title: 'Wonder Woman Official Movie'),
                     CardWidget(
                         name: 'Larel Mathews',
-                        url:
-                            'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZXZlbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                        url: 'https://miro.medium.com/max/700/1*IcdX73amafu9QGM-43I4WQ.jpeg',
                         timeago: '2 Weeks Ago',
-                        views: '20M'),
+                        views: '20M', title: 'Without Remourse Tom Clancy'),
                     CardWidget(
                         name: 'Peter Parker',
                         url:
-                            'https://images.unsplash.com/photo-1508997449629-303059a039c0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGV2ZW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                            'https://static.cdprojektred.com/cms.cdprojektred.com/1x1_middle/4d906a86e3029d7fe811967268578a4412bb05f2-592x592.jpg',
                         timeago: '1 Weeks Ago',
-                        views: '20M'),
+                        views: '20M', title: 'The Witcher '),
                     CardWidget(
                         name: 'Lesly Lebron',
                         url:
-                            'https://images.unsplash.com/photo-1560523160-754a9e25c68f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGV2ZW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+                            'https://i.ytimg.com/vi/JrndifJj2A0/maxresdefault.jpg',
                         timeago: '9 Weeks Ago',
-                        views: '20M'),
+                        views: '20M', title: 'Sacrifice of Tears - season 5'),
                     CardWidget(
                         name: 'Usain Bolt',
                         url:
                             'https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg)/origin-imgresizer.eurosport.com/2021/04/05/3023585-62027428-2560-1440.jpg',
                         timeago: '20 months Ago',
-                        views: '20M'),
+                        views: '20M', title: '20M' ),
                   ],
                 ),
                 Icon(Icons.cabin),
@@ -81,19 +106,10 @@ class MyApp extends StatelessWidget {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () => {},
-              child: Icon(Icons.video_camera_front),
+              child: Icon(Icons.shopping_cart_outlined),
               backgroundColor: Colors.orange,
             ),
-            bottomNavigationBar: TabBar(
-                indicatorColor: Colors.orange,
-                labelColor: Colors.orange,
-                tabs: [
-                  Tab(icon: Icon(Icons.movie_filter_outlined,textDirection: TextDirection.rtl,),text: 'Top Movies',),
-                  Tab(icon: Icon(Icons.download_outlined), text: 'Downloads',),
-                  Tab(icon: Icon(Icons.person_outline_outlined),text: 'Account'),
-                  // Tab(icon: Icon(Icons.directions_bike)),
-                ],
-              ),
+            
           ),
 
         ));

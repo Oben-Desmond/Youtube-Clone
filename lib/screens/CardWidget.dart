@@ -7,6 +7,7 @@ class CardWidget extends StatelessWidget {
   String views = '';
   String timeago = '';
   int randomNum = 0;
+  String title = '';
   List<MaterialColor> colors = [
     Colors.green,
     Colors.orange,
@@ -20,16 +21,24 @@ class CardWidget extends StatelessWidget {
           'https://st.depositphotos.com/1597387/1984/i/600/depositphotos_19841901-stock-photo-asian-young-business-man-close.jpg',
       this.name = 'Desmond Oben',
       this.views = '1M',
-      this.timeago = '1 month ago'}) {
+      this.timeago = '1 month ago',
+      this.title = ''}) {
     this.randomNum = ((timeago + name + views + url).length) % colors.length;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Container(
+      color: Colors.black54,
+      child:
+     Column(
+      
       children: [
         Container(
-          child: Image.network(url),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(5),
+            child: Image.network(url),
+          ),
           padding: EdgeInsets.all(10),
         ),
         Container(
@@ -39,19 +48,23 @@ class CardWidget extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 CircleAvatar(
                   backgroundColor: colors[randomNum],
-                  radius: 20,
+                  radius: 17,
                   child: Text(
                     name[0].toUpperCase(),
-                    style: TextStyle(color: Colors.white, fontSize: 23),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 Flexible(
+                  fit: FlexFit.tight,
                   child: Text(
-                    'How to Apologize a guide to people that suck at it',
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500, color: Colors.white70),
+                    this.title,
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white70),
                   ),
                 ),
                 IconButton(
@@ -64,33 +77,24 @@ class CardWidget extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                SizedBox(
-                  width: 50,
-                  height: 10,
-                ),
-                Flexible(
-                  child: Text(
-                    '$name - $views views -$timeago',
-                    style: TextStyle(fontSize: 14, color: Colors.grey[500]),
-                  ),
-                )
-              ]),
               Divider(
-                color: Colors.grey[300],
+                color: Colors.grey,
+              ),
+              SizedBox(
+                height: 10,
               )
             ],
           ),
         )
       ],
-    );
+    ),);
   }
 }
 
 List<CardWidget> postData = [
   CardWidget(
       name: 'Akumah Ndeh',
-      url: 'https://images.unsplash.com/file-1628106544947-73e839ff1e0fimage',
+      url: 'https://i.ytimg.com/vi_webp/VSB4wGIdDwo/maxresdefault.webp',
       timeago: '3 Weeks Ago',
       views: '20M'),
   CardWidget(
