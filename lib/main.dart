@@ -93,11 +93,11 @@ class MyApp extends StatelessWidget {
                         timeago: '9 Weeks Ago',
                         views: '20M', title: 'Sacrifice of Tears - season 5'),
                     CardWidget(
-                        name: 'Usain Bolt',
+                        name: 'Zilbert',
                         url:
-                            'https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg)/origin-imgresizer.eurosport.com/2021/04/05/3023585-62027428-2560-1440.jpg',
+                            'https://i.ytimg.com/vi/YEKqbO3geUM/maxresdefault.jpg',
                         timeago: '20 months Ago',
-                        views: '20M', title: '20M' ),
+                        views: '20M', title: 'Battle of Royalty' ),
                   ],
                 ),
                 Icon(Icons.cabin),
