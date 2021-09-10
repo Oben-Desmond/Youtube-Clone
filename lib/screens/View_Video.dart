@@ -9,6 +9,9 @@ class ViewVideo extends StatelessWidget {
     url: 'https://i.ytimg.com/vi_webp/VSB4wGIdDwo/maxresdefault.webp',
     views: '',
   );
+  ViewVideo({info}) {
+    cardInfo = info;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class ViewVideo extends StatelessWidget {
           //  Container(child:Video_PLayer()) ,
           Stack(
             children: [
-              Container(child: Image.asset('images/movie.jpg')),
+              Container(child: Image.network(cardInfo.url)),
               Column(children: [
                 Text(cardInfo.title),
                 Center(
@@ -33,14 +36,17 @@ class ViewVideo extends StatelessWidget {
               ])
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+         Container(
+           padding: EdgeInsets.symmetric(horizontal:12),
+           child:  Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                  child: Text(
+                  child: Flexible(
+                      child: Text(
                 cardInfo.title,
                 style: TextStyle(fontSize: 18),
-              )),
+              ))),
               TextButton.icon(
                   onPressed: () => {},
                   icon: Icon(
@@ -53,6 +59,7 @@ class ViewVideo extends StatelessWidget {
                       )))
             ],
           ),
+         ),
           Divider(
             height: 2,
           ),

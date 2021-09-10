@@ -29,7 +29,15 @@ class CardWidget extends StatelessWidget {
   void Navigate(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ViewVideo()),
+      MaterialPageRoute(
+          builder: (context) => ViewVideo(
+                info: CardWidget(
+                    name: this.name,
+                    timeago: this.timeago,
+                    title: this.title,
+                    url: this.url,
+                    views: this.views),
+              )),
     );
   }
 
@@ -37,16 +45,18 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.black54,
-        padding: EdgeInsets.symmetric(horizontal:10),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
             Container(
+                child: TextButton(
+              onPressed: () {
+                Navigate(context);
+              },
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: Image.network(this.url),
-              ),
-              padding: EdgeInsets.all(10),
-            ),
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.network(this.url)),
+            )),
             Container(
               padding: EdgeInsets.all(10),
               child: Column(
@@ -76,8 +86,8 @@ class CardWidget extends StatelessWidget {
                           ),
                         ),
                         PopupMenuButton(
-                          onSelected:(val){
-                             print(val);
+                          onSelected: (val) {
+                            print(val);
                           },
                           child: Center(
                               child: Icon(
