@@ -58,15 +58,26 @@ class MyApp extends StatelessWidget {
                 ],
               ),
               actions: [
-                Icon(
-                  Icons.search,
-                ),
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.search,
+                    )),
                 SizedBox(
                   width: 10,
                 ),
-                Icon(Icons.more_vert),
+                PopupMenuButton(
+                    child: Icon(Icons.more_vert),
+                    itemBuilder: (context) {
+                      return [
+                        PopupMenuItem(child: Text('Settings')),
+                        PopupMenuItem(child: Text('History')),
+                        PopupMenuItem(child: Text('Wish List')),
+                        PopupMenuItem(child: Text('Logout')),
+                      ];
+                    }),
                 SizedBox(
-                  width: 10,
+                  width: 40,
                 )
               ],
             ),
@@ -75,7 +86,7 @@ class MyApp extends StatelessWidget {
                 ListView(
                   children: [...VidCards().data],
                 ),
-               DownloadsPage(),
+                DownloadsPage(),
                 AccountPage(),
               ],
             ),

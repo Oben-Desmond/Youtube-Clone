@@ -37,81 +37,77 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.black54,
-        child: TextButton(
-            onPressed:(){
-              Navigate(context);
-            },
-            child: Column(
-              children: [
-                Container(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: Image.asset('images/movie.jpg'),
+        padding: EdgeInsets.symmetric(horizontal:10),
+        child: Column(
+          children: [
+            Container(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image.network(this.url),
+              ),
+              padding: EdgeInsets.all(10),
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: colors[randomNum],
+                          radius: 17,
+                          child: Text(
+                            name[0].toUpperCase(),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Flexible(
+                          fit: FlexFit.tight,
+                          child: Text(
+                            this.title,
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white70),
+                          ),
+                        ),
+                        PopupMenuButton(
+                          onSelected:(val){
+                             print(val);
+                          },
+                          child: Center(
+                              child: Icon(
+                            Icons.more_vert,
+                            color: Colors.grey,
+                          )),
+                          itemBuilder: (context) {
+                            return [
+                              PopupMenuItem(child: Text('download')),
+                              PopupMenuItem(child: Text('share')),
+                              PopupMenuItem(child: Text('add to wishlist')),
+                              PopupMenuItem(child: Text('watch'))
+                            ];
+                          },
+                        ),
+                      ]),
+                  SizedBox(
+                    height: 10,
                   ),
-                  padding: EdgeInsets.all(10),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: colors[randomNum],
-                              radius: 17,
-                              child: Text(
-                                name[0].toUpperCase(),
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Flexible(
-                              fit: FlexFit.tight,
-                              child: Text(
-                                this.title,
-                                style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white70),
-                              ),
-                            ),
-                            PopupMenuButton(
-                              onSelected: print,
-                              child: Center(
-                                  child: IconButton(
-                                      onPressed: () => {},
-                                      icon: Icon(
-                                        Icons.more_vert,
-                                        color: Colors.grey,
-                                      ))),
-                              itemBuilder: (context) {
-                                return [
-                                  PopupMenuItem(child: Text('download')),
-                                  PopupMenuItem(child: Text('share')),
-                                  PopupMenuItem(child: Text('add to wishlist')),
-                                  PopupMenuItem(child: Text('watch'))
-                                ];
-                              },
-                            ),
-                          ]),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Divider(
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      )
-                    ],
+                  Divider(
+                    color: Colors.orange[300],
                   ),
-                )
-              ],
-            )));
+                  SizedBox(
+                    height: 10,
+                  )
+                ],
+              ),
+            )
+          ],
+        ));
   }
 }
 
