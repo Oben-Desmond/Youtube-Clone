@@ -80,8 +80,7 @@ class CardWidget extends StatelessWidget {
                           child: Text(
                             this.title,
                             style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 15,
                                 color: Colors.white70),
                           ),
                         ),
