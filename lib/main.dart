@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:first_flutter_app/screens/Account.dart';
 import 'package:first_flutter_app/screens/CardWidget.dart';
 import 'package:first_flutter_app/screens/Downloads.dart';
+import 'package:first_flutter_app/screens/cartfabbutton.dart';
 import 'package:first_flutter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -90,11 +91,7 @@ class MyApp extends StatelessWidget {
                 AccountPage(),
               ],
             ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () => {},
-              child: Icon(Icons.shopping_cart_outlined),
-              backgroundColor: Colors.orange,
-            ),
+            floatingActionButton: CartFabButton(),
           ),
         ));
   }
