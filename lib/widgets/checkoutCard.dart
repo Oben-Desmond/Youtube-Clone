@@ -6,6 +6,8 @@ class CheckOutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.grey[900],
+      
       elevation: 5,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
