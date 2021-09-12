@@ -14,7 +14,7 @@ class _BuyMoviesState extends State<BuyMovies> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Wikipedia Explorer'),
+          title: const Text('Confirm Payment'),
           // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
           actions: <Widget>[
             // NavigationControls(_controller.future),
@@ -22,7 +22,7 @@ class _BuyMoviesState extends State<BuyMovies> {
           ],
         ),
         body: Center(
-          child: Text('Wikipedia Explorer'),
+          child: Text('Final Checkout'),
         ));
     // floatingActionButton: _bookmarkButton(),
   }

@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:first_flutter_app/screens/BuyMovies.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:first_flutter_app/widgets/checkoutCard.dart';
 import 'package:flutter/material.dart';
