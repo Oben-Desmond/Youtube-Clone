@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+
 class CheckOutCard extends StatelessWidget {
   var src =
       'https://static.cdprojektred.com/cms.cdprojektred.com/1x1_middle/4d906a86e3029d7fe811967268578a4412bb05f2-592x592.jpg';
@@ -29,7 +31,7 @@ class CheckOutCard extends StatelessWidget {
               '200FCFA',
               style: TextStyle(color: Colors.orange[300]),
             ),
-          )
+          ),
         ],
       ),
     );
