@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class SignUpPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Login to Vizu',
+                  'Create Vizu Account',
                   style: TextStyle(
                       fontFamily: 'Pacifico',
                       fontSize: 27,
@@ -34,6 +34,15 @@ class LoginPage extends StatelessWidget {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Phone Number',
                   ),
                 ),
                 SizedBox(
@@ -61,7 +70,7 @@ class LoginPage extends StatelessWidget {
                       }
                     },
                     child: const Text(
-                      'LOG IN',
+                      'SIGN UP',
                       style: TextStyle(color: Colors.orange),
                     ),
                   ),
@@ -74,7 +83,7 @@ class LoginPage extends StatelessWidget {
           child: TextButton(
             onPressed: () {},
             child: Text(
-              'SIGN UP',
+              'LOG IN',
               style: TextStyle(color: Colors.orange),
             ),
             style: TextButton.styleFrom(primary: Colors.orange),
@@ -82,18 +91,6 @@ class LoginPage extends StatelessWidget {
           bottom: 40,
           left: 25,
         ),
-         Positioned(
-          child: TextButton(
-            onPressed: () {},
-            child: Text(
-              'Forgot Password ?',
-              style: TextStyle(color: Colors.grey),
-            ),
-            style: TextButton.styleFrom(primary: Colors.orange),
-          ),
-          bottom: 40,
-          right: 20,
-        )
       ],
     ));
   }
