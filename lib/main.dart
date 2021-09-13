@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:first_flutter_app/screens/Account.dart';
 import 'package:first_flutter_app/screens/CardWidget.dart';
 import 'package:first_flutter_app/screens/Downloads.dart';
+import 'package:first_flutter_app/screens/LoginPage.dart';
 import 'package:first_flutter_app/screens/cartfabbutton.dart';
 import 'package:first_flutter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -67,16 +68,7 @@ class MyApp extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                PopupMenuButton(
-                    child: Icon(Icons.more_vert),
-                    itemBuilder: (context) {
-                      return [
-                        PopupMenuItem(child: Text('Settings')),
-                        PopupMenuItem(child: Text('History')),
-                        PopupMenuItem(child: Text('Wish List')),
-                        PopupMenuItem(child: Text('Logout')),
-                      ];
-                    }),
+                TopMenu(),
                 SizedBox(
                   width: 40,
                 )
@@ -139,4 +131,50 @@ class VidCards {
         title: 'Battle of Royalty'),
   ];
   VidCards();
+}
+
+class TopMenu extends StatelessWidget  {
+
+   void navigateTo(var value, BuildContext context){
+         print(value);
+         switch (value) {
+           case 4:pushNav(context,LoginPage());
+             
+             break;
+           default:return;
+         }
+   }
+   void pushNav(BuildContext context,Widget widget){
+      Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>  widget),
+    );
+   }
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
+        child: Icon(Icons.more_vert),
+       onSelected: (value){ navigateTo(value,context);},
+        itemBuilder: (context) {
+          return [
+            PopupMenuItem(
+              child: Text('Settings'),
+              value: 1,
+            ),
+            PopupMenuItem(
+              child: Text('History'),
+              value: 2,
+            ),
+            PopupMenuItem(
+              child: Text('Wish List'),
+              value: 3,
+            ),
+            PopupMenuItem(
+              child: Text('Logout'),
+               value: 4,
+            ),
+          ];
+        });
+  }
 }
