@@ -1,12 +1,14 @@
+import 'package:first_flutter_app/modules/cart.dart';
 import 'package:first_flutter_app/screens/View_Video.dart';
+import 'package:first_flutter_app/widgets/checkoutCard.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 // ignore: must_be_immutable
 class CardWidget extends StatelessWidget {
   String name = 'Desmond Oben';
   String url = '';
   String views = '';
-  String timeago = '';
+  String timeago = ''; 
   int randomNum = 0;
   String title = '';
   List<MaterialColor> colors = [
@@ -16,6 +18,7 @@ class CardWidget extends StatelessWidget {
     Colors.lightBlue,
     Colors.lightGreen
   ];
+
 
   CardWidget(
       {this.url =
@@ -27,6 +30,7 @@ class CardWidget extends StatelessWidget {
     this.randomNum = ((timeago + name + views + url).length) % colors.length;
   }
   void Navigate(BuildContext context) {
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -43,6 +47,9 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+  var cart=context.watch<Cart>();
+
     return Container(
         color: Colors.black54,
         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -86,7 +93,10 @@ class CardWidget extends StatelessWidget {
                         ),
                         PopupMenuButton(
                           onSelected: (val) {
-                            print(val);
+                            if(val==1){
+                              cart.addToList(CheckOutCard());
+                               print('adding');
+                            }
                           },
                           child: Center(
                               child: Icon(
@@ -95,7 +105,7 @@ class CardWidget extends StatelessWidget {
                           )),
                           itemBuilder: (context) {
                             return [
-                              PopupMenuItem(child: Text('download')),
+                              PopupMenuItem(child: Text('download'),value: 1,),
                               PopupMenuItem(child: Text('share')),
                               PopupMenuItem(child: Text('add to wishlist')),
                               PopupMenuItem(child: Text('watch'))

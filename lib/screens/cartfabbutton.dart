@@ -1,6 +1,8 @@
+import 'package:first_flutter_app/modules/cart.dart';
 import 'package:first_flutter_app/screens/CardWidget.dart';
 import 'package:first_flutter_app/screens/CartPage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartFabButton extends StatefulWidget {
   @override
@@ -22,26 +24,16 @@ class _CartFabButtonState extends State<CartFabButton> {
 
   @override
   Widget build(BuildContext context) {
-    return !isAdded
-        ? FloatingActionButton(
-            onPressed: () {
-              setAdded();
-              Navigate2Cart(context);
-            },
-            child: Icon(Icons.shopping_cart_outlined),
-            backgroundColor: Colors.orange,
-          )
-        : FloatingActionButton.extended(
-            onPressed: () {
-              Navigate2Cart(context);
-              setState(() {
-                isAdded = !true;
-              });
-            },
-            label: Text('1'),
-            icon: Icon(Icons.shopping_cart_outlined),
-            backgroundColor: Colors.lightGreen,
-          );
+    return Consumer<Cart>(builder: (context,cart,child){
+      return FloatingActionButton.extended(
+      onPressed: () {
+        Navigate2Cart(context);
+      },
+      backgroundColor: Colors.orange,
+      label: Text('${cart.cartList.length}'),
+      icon: Icon(Icons.shopping_cart_outlined),
+    );
+    } );
   }
 }
 
