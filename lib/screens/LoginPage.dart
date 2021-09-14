@@ -1,6 +1,9 @@
 import 'dart:ui';
 
+import 'package:first_flutter_app/screens/SignUpPage.dart';
 import 'package:flutter/material.dart';
+
+import '../main.dart';
 
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -59,6 +62,10 @@ class LoginPage extends StatelessWidget {
                       if (_formKey.currentState!.validate()) {
                         // Process data.
                       }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyApp()),
+                      );
                     },
                     child: const Text(
                       'LOG IN',
@@ -72,17 +79,22 @@ class LoginPage extends StatelessWidget {
         ),
         Positioned(
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUpPage()),
+              );
+            },
             child: Text(
               'SIGN UP',
               style: TextStyle(color: Colors.orange),
             ),
             style: TextButton.styleFrom(primary: Colors.orange),
           ),
-          bottom: 40,
+          bottom: 20,
           left: 25,
         ),
-         Positioned(
+        Positioned(
           child: TextButton(
             onPressed: () {},
             child: Text(
@@ -91,7 +103,7 @@ class LoginPage extends StatelessWidget {
             ),
             style: TextButton.styleFrom(primary: Colors.orange),
           ),
-          bottom: 40,
+          bottom: 20,
           right: 20,
         )
       ],

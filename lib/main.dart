@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
                 ],
               ),
               actions: [
+                
                 IconButton(
                     onPressed: () {},
                     icon: Icon(
@@ -133,29 +134,33 @@ class VidCards {
   VidCards();
 }
 
-class TopMenu extends StatelessWidget  {
+class TopMenu extends StatelessWidget {
+  void navigateTo(var value, BuildContext context) {
+    print(value);
+    switch (value) {
+      case 4:
+        pushNav(context, LoginPage());
 
-   void navigateTo(var value, BuildContext context){
-         print(value);
-         switch (value) {
-           case 4:pushNav(context,LoginPage());
-             
-             break;
-           default:return;
-         }
-   }
-   void pushNav(BuildContext context,Widget widget){
-      Navigator.push(
+        break;
+      default:
+        return;
+    }
+  }
+
+  void pushNav(BuildContext context, Widget widget) {
+    Navigator.push(
       context,
-      MaterialPageRoute(
-          builder: (context) =>  widget),
+      MaterialPageRoute(builder: (context) => widget),
     );
-   }
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
         child: Icon(Icons.more_vert),
-       onSelected: (value){ navigateTo(value,context);},
+        onSelected: (value) {
+          navigateTo(value, context);
+        },
         itemBuilder: (context) {
           return [
             PopupMenuItem(
@@ -172,7 +177,7 @@ class TopMenu extends StatelessWidget  {
             ),
             PopupMenuItem(
               child: Text('Logout'),
-               value: 4,
+              value: 4,
             ),
           ];
         });
