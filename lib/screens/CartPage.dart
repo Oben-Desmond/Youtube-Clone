@@ -1,8 +1,10 @@
 import 'dart:ui';
+import 'package:first_flutter_app/modules/cart.dart';
 import 'package:first_flutter_app/screens/BuyMovies.dart';
 
 import 'package:first_flutter_app/widgets/checkoutCard.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
   @override
@@ -20,11 +22,15 @@ class _CartPageState extends State<CartPage> {
     CheckOutCard(),
     CheckOutCard(),
     CheckOutCard(),
-    CheckOutCard()
+   
   ];
 
   @override
   Widget build(BuildContext context) {
+
+    var cart = context.watch<Cart>();
+    
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black54,
@@ -37,11 +43,15 @@ class _CartPageState extends State<CartPage> {
             // padding: EdgeInsets.symmetric(horizontal: 10, vertical:10),
             children: [
               SizedBox(height: 14),
-              ...CartItems.map((widget) => (TextButton(
-                    onPressed: () => {deleteEls(0)},
-                    child: widget,
-                    style: TextButton.styleFrom(primary: Colors.orange),
-                  ))),
+              // ...CartItems.map((widget) => (TextButton(
+              //       onPressed: () => {deleteEls(0)},
+              //       child: widget,
+              //       style: TextButton.styleFrom(primary: Colors.orange),
+              //     ))),
+              // Consumer<Cart>(builder: (context, Item, child) {
+              //   return Item.cartList;
+              // },),
+              ...cart.cartList,
               SizedBox(height: 18),
               Container(
                 padding: EdgeInsets.all(13),

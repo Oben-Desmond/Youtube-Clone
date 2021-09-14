@@ -8,13 +8,19 @@ import 'package:first_flutter_app/screens/cartfabbutton.dart';
 import 'package:first_flutter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import 'modules/cart.dart';
 
 void main() {
   var rng = new Random();
   for (var i = 0; i < 10; i++) {
     print(rng.nextInt(100));
   }
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context)=>Cart(),
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -60,7 +66,6 @@ class MyApp extends StatelessWidget {
                 ],
               ),
               actions: [
-                
                 IconButton(
                     onPressed: () {},
                     icon: Icon(
