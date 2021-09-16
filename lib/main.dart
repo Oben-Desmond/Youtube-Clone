@@ -18,10 +18,11 @@ void main() {
     print(rng.nextInt(100));
   }
   runApp(ChangeNotifierProvider(
-    create: (context)=>Cart(),
+    create: (context) => Cart(),
     child: MyApp(),
   ));
 }
+
 
 class MyApp extends StatelessWidget {
   @override

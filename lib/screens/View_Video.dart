@@ -1,8 +1,10 @@
 import 'package:first_flutter_app/screens/CardWidget.dart';
+import 'package:first_flutter_app/screens/VideoScreen.dart';
 import 'package:flutter/material.dart';
 
-class ViewVideo extends StatelessWidget {
-  CardWidget cardInfo = CardWidget(
+class ViewVideo extends StatefulWidget {
+
+   CardWidget cardInfo = CardWidget(
     name: ' ',
     timeago: '',
     title: 'Wonder Woman',
@@ -12,7 +14,23 @@ class ViewVideo extends StatelessWidget {
   ViewVideo({info}) {
     cardInfo = info;
   }
+  @override
+  _ViewVideoState createState() => _ViewVideoState(info: cardInfo);
+}
 
+class _ViewVideoState extends State<ViewVideo> {
+  bool play = false;
+   CardWidget cardInfo = CardWidget(
+    name: ' ',
+    timeago: '',
+    title: 'Wonder Woman',
+    url: 'https://i.ytimg.com/vi_webp/VSB4wGIdDwo/maxresdefault.webp',
+    views: '',
+  );
+  
+  _ViewVideoState({info}) {
+    cardInfo = info;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,33 +39,7 @@ class ViewVideo extends StatelessWidget {
         child: ListView(
           children: [
             //  Container(child:Video_PLayer()) ,
-            Stack(
-              children: [
-                Container(
-                    height: 200,
-                    child: Center(
-                      child: Image.network(cardInfo.url),
-                    )),
-                Container(
-                  color: Colors.black.withOpacity(0.7),
-                  height: 200,
-                  // width: 500,
-                ),
-                Column(children: [
-                  Text(cardInfo.title, style: TextStyle(color: Colors.grey),),
-                  Center(
-                    heightFactor: 2,
-                    child: IconButton(
-                      onPressed: () => {},
-                      icon: Icon(Icons.play_circle),
-                      color: Colors.orange.withOpacity(0.3),
-                      iconSize: 60,
-                    ),
-                  )
-                ]),
-                Positioned(child: Text( '2:00', style: TextStyle(color: Colors.grey)),bottom: 10,right: 20,)
-              ],
-            ),
+            VideoPage(cardInfo),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 12),
               child: Row(
@@ -82,7 +74,9 @@ class ViewVideo extends StatelessWidget {
             Container(
                 padding: EdgeInsets.all(10),
                 child: Text(
-                    'Inside this class, the build function is overridden which takes the BuildContext as the parameter. This build function returns a widget where we design the UI of the app. Since it is a stateful widget This build function returns a widget where we design the UI of the app. Since it is a stateful widget the build function is called many times which creates the entire UI once again with all the changes the build function is called many times which creates the entire UI once again with all the changes. ',style: TextStyle(color: Colors.grey[300]),)),
+                  'Inside this class, the build function is overridden which takes the BuildContext as the parameter. This build function returns a widget where we design the UI of the app. Since it is a stateful widget This build function returns a widget where we design the UI of the app. Since it is a stateful widget the build function is called many times which creates the entire UI once again with all the changes the build function is called many times which creates the entire UI once again with all the changes. ',
+                  style: TextStyle(color: Colors.grey[300]),
+                )),
             Divider(
               color: Colors.orange[300],
               indent: 40,
@@ -105,4 +99,10 @@ class ViewVideo extends StatelessWidget {
       ),
     );
   }
+
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   _controller.dispose();
+  // }
 }
